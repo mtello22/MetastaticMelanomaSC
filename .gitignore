@@ -47,3 +47,10 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+Data/BasePaper.pdf
+*.tsv
+*.xlsx
+*.xls
+*.pptx
+SuppMaterialReference/NIHMS538715-supplement-1.docx
+*.doc
