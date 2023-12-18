@@ -1,0 +1,11 @@
+tumor_id	Age	Resistant	PreOp_None	PreOp_Ipi	PreOp_Trame	PreOp_IL2	PreOp_Nivo	PreOp_antiKIRab	PreOp_WDVAX	PreOp_Treme	PreOp_MEDI3617	PreOp_IFN	Mutation_WT	Mutation_V600K	Mutation_V600E	Mutation_Q61L	Mutation_Q61R	Mutation_NoInfo	Resection_Subcutaneous	Resection_LymphNode	Resection_InternalOrgan	Resection_Intramuscular	Male
+11	72	0	1	0	0	0	0	0	0	0	0	0	0	1	1	0	0	0	1	0	0	0	1
+12	72	1	0	0	1	0	0	0	0	0	0	0	0	1	1	0	0	0	1	0	0	0	1
+21	48	0	1	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	1	0	1
+22	48	1	0	0	1	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	1	0	1
+31	42	0	1	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	1	0	0	1
+32	42	1	0	0	1	0	0	0	0	0	0	0	0	0	1	0	0	0	0	1	0	0	1
+41	56	0	1	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	1	1
+42	56	0	0	0	1	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	1	0	1
+51	49	0	1	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	1	0	0	1
+52	49	1	0	0	1	0	0	0	0	0	0	0	0	0	1	0	0	0	0	1	0	0	1

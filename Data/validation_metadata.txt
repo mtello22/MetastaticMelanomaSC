@@ -1,0 +1,11 @@
+tumor_id	Time 	ProbNo	ProbYes	Resistant
+11	Pre	0.899	0.101	No
+12	Post	0.947	0.053	Yes
+21	Pre	0.91	0.09	No
+22	Post	0.919	0.081	Yes
+31	Pre	0.747	0.253	No
+32	Post	0.403	0.597	Yes
+41	Pre	0.952	0.048	No
+42	Post	0.945	0.055	No
+51	Pre	0.825	0.175	No
+52	Post	0.969	0.031	Yes
