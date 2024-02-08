@@ -10,9 +10,10 @@ This repo focuses in the re-analysis of the dataset developed by Tirosh
 and colleagues in the paper "Dissecting the multicellular ecosystem of
 metastatic melanoma by single-cell RNA-seq" from 2016.
 
--   The main file for this repo is ProjectReport.Rmd, it contains the
-    code to reproduce the data analysis and to generate the input
-    feature tables for the supervised classification pipeline.
+-   The folder Rmarkdown contains the main report for this project:
+    ProjectReport.Rmd. It contains the code to reproduce the data 
+    analysis and to generate the input feature tables for the 
+    supervised classification pipeline. 
 
 -   Under the main folder the file ProjectPresentation.pdf contains the
     PDF version of the presentation for future references.
