@@ -592,9 +592,9 @@ The discrepancy with the results from the presentation are likely due to a more 
 
 Due to the limited ability of the model trained in sc-RNAseq data to predict tumor resistance in bulk RNAseq data, I proceeded to perform a qualitative evaluation of the model in the full single cell dataset. The general visualization of SHAP values indicates a clear association for the following genes:
 
-![](~/GitHub/MetastaticMelanomaSC/JupyterNB/beeswarmSHAP.png)
+![](images/beeswarmSHAP.png)
 
-![](~/GitHub/MetastaticMelanomaSC/JupyterNB/absoluteSHAP.png)
+![](images/absoluteSHAP.png)
 
 The gene with higher absolute contribution to the model was the ribosomal protein ENSG00000185088 (RPS27L), followed by ENSG00000204592 (HLA-E). A recent study by Bakr et al 2020, highlights the crucial role of other ribosomal proteins such as RPS19 and RPS3 as biomarkers of melanoma prognosis [10]. On the other hand, HLA-E plays an important inmunological role and according to the Human Protein Atlas, it is upregulated in leukemia samples and it is associated with an unfavorable prognosis in renal cancer. It is interesting that many genes showed a clear bimodal association of SHAP with expression values such as the ribosomal protein RPS29 (ENSG00000213741), indicating a potential role as tumor resistance biomarker.
 
