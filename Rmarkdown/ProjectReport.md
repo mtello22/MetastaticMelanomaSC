@@ -1,7 +1,7 @@
 CPSC545 Project report
 ================
 Marco Tello
-2023-12-17
+2024-02-08
 
 # Introduction
 
@@ -103,29 +103,29 @@ verify that the data follows the same reported trends
     ## Using no_dims = 2, perplexity = 30.000000, and theta = 0.500000
     ## Computing input similarities...
     ## Building tree...
-    ## Done in 0.05 seconds (sparsity = 0.106834)!
+    ## Done in 0.05 seconds (sparsity = 0.106831)!
     ## Learning embedding...
-    ## Iteration 50: error is 66.294969 (50 iterations in 0.06 seconds)
-    ## Iteration 100: error is 58.376912 (50 iterations in 0.05 seconds)
-    ## Iteration 150: error is 57.357889 (50 iterations in 0.05 seconds)
-    ## Iteration 200: error is 57.175481 (50 iterations in 0.05 seconds)
-    ## Iteration 250: error is 57.066031 (50 iterations in 0.04 seconds)
-    ## Iteration 300: error is 1.023809 (50 iterations in 0.04 seconds)
-    ## Iteration 350: error is 0.861859 (50 iterations in 0.04 seconds)
-    ## Iteration 400: error is 0.819584 (50 iterations in 0.04 seconds)
-    ## Iteration 450: error is 0.803447 (50 iterations in 0.04 seconds)
-    ## Iteration 500: error is 0.791305 (50 iterations in 0.04 seconds)
-    ## Iteration 550: error is 0.785845 (50 iterations in 0.04 seconds)
-    ## Iteration 600: error is 0.781144 (50 iterations in 0.04 seconds)
-    ## Iteration 650: error is 0.777705 (50 iterations in 0.04 seconds)
-    ## Iteration 700: error is 0.773961 (50 iterations in 0.04 seconds)
-    ## Iteration 750: error is 0.771198 (50 iterations in 0.05 seconds)
-    ## Iteration 800: error is 0.767443 (50 iterations in 0.05 seconds)
-    ## Iteration 850: error is 0.764809 (50 iterations in 0.04 seconds)
-    ## Iteration 900: error is 0.764010 (50 iterations in 0.04 seconds)
-    ## Iteration 950: error is 0.762423 (50 iterations in 0.04 seconds)
-    ## Iteration 1000: error is 0.758917 (50 iterations in 0.04 seconds)
-    ## Fitting performed in 0.85 seconds.
+    ## Iteration 50: error is 64.310915 (50 iterations in 0.05 seconds)
+    ## Iteration 100: error is 57.874179 (50 iterations in 0.05 seconds)
+    ## Iteration 150: error is 57.223322 (50 iterations in 0.04 seconds)
+    ## Iteration 200: error is 57.050417 (50 iterations in 0.05 seconds)
+    ## Iteration 250: error is 56.996225 (50 iterations in 0.05 seconds)
+    ## Iteration 300: error is 1.025372 (50 iterations in 0.05 seconds)
+    ## Iteration 350: error is 0.869050 (50 iterations in 0.06 seconds)
+    ## Iteration 400: error is 0.824475 (50 iterations in 0.04 seconds)
+    ## Iteration 450: error is 0.803928 (50 iterations in 0.05 seconds)
+    ## Iteration 500: error is 0.793628 (50 iterations in 0.05 seconds)
+    ## Iteration 550: error is 0.787264 (50 iterations in 0.04 seconds)
+    ## Iteration 600: error is 0.782796 (50 iterations in 0.04 seconds)
+    ## Iteration 650: error is 0.777950 (50 iterations in 0.05 seconds)
+    ## Iteration 700: error is 0.773556 (50 iterations in 0.04 seconds)
+    ## Iteration 750: error is 0.770807 (50 iterations in 0.04 seconds)
+    ## Iteration 800: error is 0.769570 (50 iterations in 0.04 seconds)
+    ## Iteration 850: error is 0.767660 (50 iterations in 0.04 seconds)
+    ## Iteration 900: error is 0.766749 (50 iterations in 0.04 seconds)
+    ## Iteration 950: error is 0.765529 (50 iterations in 0.04 seconds)
+    ## Iteration 1000: error is 0.764394 (50 iterations in 0.04 seconds)
+    ## Fitting performed in 0.87 seconds.
 
 ![](ProjectReport_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
@@ -142,29 +142,29 @@ it shows a close resemblance.
     ## Using no_dims = 2, perplexity = 30.000000, and theta = 0.500000
     ## Computing input similarities...
     ## Building tree...
-    ## Done in 0.17 seconds (sparsity = 0.049860)!
+    ## Done in 0.17 seconds (sparsity = 0.049861)!
     ## Learning embedding...
-    ## Iteration 50: error is 80.489008 (50 iterations in 0.13 seconds)
-    ## Iteration 100: error is 73.334108 (50 iterations in 0.11 seconds)
-    ## Iteration 150: error is 73.023439 (50 iterations in 0.10 seconds)
-    ## Iteration 200: error is 73.020021 (50 iterations in 0.10 seconds)
-    ## Iteration 250: error is 73.058926 (50 iterations in 0.10 seconds)
-    ## Iteration 300: error is 1.869135 (50 iterations in 0.10 seconds)
-    ## Iteration 350: error is 1.548625 (50 iterations in 0.10 seconds)
-    ## Iteration 400: error is 1.415954 (50 iterations in 0.10 seconds)
-    ## Iteration 450: error is 1.350395 (50 iterations in 0.10 seconds)
-    ## Iteration 500: error is 1.319170 (50 iterations in 0.10 seconds)
-    ## Iteration 550: error is 1.305586 (50 iterations in 0.10 seconds)
-    ## Iteration 600: error is 1.294573 (50 iterations in 0.10 seconds)
-    ## Iteration 650: error is 1.284461 (50 iterations in 0.11 seconds)
-    ## Iteration 700: error is 1.276550 (50 iterations in 0.11 seconds)
-    ## Iteration 750: error is 1.269196 (50 iterations in 0.10 seconds)
-    ## Iteration 800: error is 1.262832 (50 iterations in 0.11 seconds)
-    ## Iteration 850: error is 1.257616 (50 iterations in 0.11 seconds)
-    ## Iteration 900: error is 1.253381 (50 iterations in 0.11 seconds)
-    ## Iteration 950: error is 1.249441 (50 iterations in 0.11 seconds)
-    ## Iteration 1000: error is 1.245450 (50 iterations in 0.11 seconds)
-    ## Fitting performed in 2.13 seconds.
+    ## Iteration 50: error is 80.562864 (50 iterations in 0.11 seconds)
+    ## Iteration 100: error is 73.751023 (50 iterations in 0.11 seconds)
+    ## Iteration 150: error is 73.462881 (50 iterations in 0.11 seconds)
+    ## Iteration 200: error is 73.313926 (50 iterations in 0.11 seconds)
+    ## Iteration 250: error is 73.182237 (50 iterations in 0.11 seconds)
+    ## Iteration 300: error is 1.876412 (50 iterations in 0.12 seconds)
+    ## Iteration 350: error is 1.565897 (50 iterations in 0.11 seconds)
+    ## Iteration 400: error is 1.432785 (50 iterations in 0.11 seconds)
+    ## Iteration 450: error is 1.368147 (50 iterations in 0.11 seconds)
+    ## Iteration 500: error is 1.337408 (50 iterations in 0.11 seconds)
+    ## Iteration 550: error is 1.320815 (50 iterations in 0.11 seconds)
+    ## Iteration 600: error is 1.305827 (50 iterations in 0.11 seconds)
+    ## Iteration 650: error is 1.293430 (50 iterations in 0.11 seconds)
+    ## Iteration 700: error is 1.285548 (50 iterations in 0.11 seconds)
+    ## Iteration 750: error is 1.279301 (50 iterations in 0.12 seconds)
+    ## Iteration 800: error is 1.273870 (50 iterations in 0.12 seconds)
+    ## Iteration 850: error is 1.268775 (50 iterations in 0.11 seconds)
+    ## Iteration 900: error is 1.263432 (50 iterations in 0.10 seconds)
+    ## Iteration 950: error is 1.259216 (50 iterations in 0.11 seconds)
+    ## Iteration 1000: error is 1.256401 (50 iterations in 0.13 seconds)
+    ## Fitting performed in 2.23 seconds.
 
 ![](ProjectReport_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->![](ProjectReport_files/figure-gfm/unnamed-chunk-4-2.png)<!-- -->
 
@@ -179,29 +179,29 @@ all cells not labelled as unresolved to make the tSNE plot.
     ## Using no_dims = 2, perplexity = 30.000000, and theta = 0.500000
     ## Computing input similarities...
     ## Building tree...
-    ## Done in 0.22 seconds (sparsity = 0.040544)!
+    ## Done in 0.21 seconds (sparsity = 0.040544)!
     ## Learning embedding...
-    ## Iteration 50: error is 83.436917 (50 iterations in 0.17 seconds)
-    ## Iteration 100: error is 75.743307 (50 iterations in 0.14 seconds)
-    ## Iteration 150: error is 75.106432 (50 iterations in 0.14 seconds)
-    ## Iteration 200: error is 75.063864 (50 iterations in 0.14 seconds)
-    ## Iteration 250: error is 75.065551 (50 iterations in 0.14 seconds)
-    ## Iteration 300: error is 2.033265 (50 iterations in 0.12 seconds)
-    ## Iteration 350: error is 1.690359 (50 iterations in 0.13 seconds)
-    ## Iteration 400: error is 1.535658 (50 iterations in 0.13 seconds)
-    ## Iteration 450: error is 1.452444 (50 iterations in 0.13 seconds)
-    ## Iteration 500: error is 1.403878 (50 iterations in 0.13 seconds)
-    ## Iteration 550: error is 1.375047 (50 iterations in 0.13 seconds)
-    ## Iteration 600: error is 1.361437 (50 iterations in 0.13 seconds)
-    ## Iteration 650: error is 1.352852 (50 iterations in 0.14 seconds)
-    ## Iteration 700: error is 1.344592 (50 iterations in 0.14 seconds)
-    ## Iteration 750: error is 1.336934 (50 iterations in 0.14 seconds)
-    ## Iteration 800: error is 1.330177 (50 iterations in 0.14 seconds)
-    ## Iteration 850: error is 1.324222 (50 iterations in 0.13 seconds)
-    ## Iteration 900: error is 1.318599 (50 iterations in 0.14 seconds)
-    ## Iteration 950: error is 1.314002 (50 iterations in 0.13 seconds)
-    ## Iteration 1000: error is 1.310496 (50 iterations in 0.13 seconds)
-    ## Fitting performed in 2.69 seconds.
+    ## Iteration 50: error is 83.230372 (50 iterations in 0.19 seconds)
+    ## Iteration 100: error is 75.228872 (50 iterations in 0.13 seconds)
+    ## Iteration 150: error is 75.040966 (50 iterations in 0.13 seconds)
+    ## Iteration 200: error is 75.037761 (50 iterations in 0.13 seconds)
+    ## Iteration 250: error is 75.041244 (50 iterations in 0.13 seconds)
+    ## Iteration 300: error is 2.035888 (50 iterations in 0.12 seconds)
+    ## Iteration 350: error is 1.696325 (50 iterations in 0.13 seconds)
+    ## Iteration 400: error is 1.545290 (50 iterations in 0.13 seconds)
+    ## Iteration 450: error is 1.462776 (50 iterations in 0.13 seconds)
+    ## Iteration 500: error is 1.415506 (50 iterations in 0.13 seconds)
+    ## Iteration 550: error is 1.389064 (50 iterations in 0.13 seconds)
+    ## Iteration 600: error is 1.372341 (50 iterations in 0.13 seconds)
+    ## Iteration 650: error is 1.361741 (50 iterations in 0.12 seconds)
+    ## Iteration 700: error is 1.353250 (50 iterations in 0.12 seconds)
+    ## Iteration 750: error is 1.346209 (50 iterations in 0.12 seconds)
+    ## Iteration 800: error is 1.339036 (50 iterations in 0.12 seconds)
+    ## Iteration 850: error is 1.333045 (50 iterations in 0.12 seconds)
+    ## Iteration 900: error is 1.328356 (50 iterations in 0.13 seconds)
+    ## Iteration 950: error is 1.324042 (50 iterations in 0.12 seconds)
+    ## Iteration 1000: error is 1.319850 (50 iterations in 0.12 seconds)
+    ## Fitting performed in 2.59 seconds.
 
 ![](ProjectReport_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->![](ProjectReport_files/figure-gfm/unnamed-chunk-5-2.png)<!-- -->
 
@@ -322,29 +322,29 @@ the train and test splits.
     ## Using no_dims = 2, perplexity = 30.000000, and theta = 0.500000
     ## Computing input similarities...
     ## Building tree...
-    ## Done in 0.04 seconds (sparsity = 0.140718)!
+    ## Done in 0.05 seconds (sparsity = 0.140715)!
     ## Learning embedding...
-    ## Iteration 50: error is 65.610585 (50 iterations in 0.05 seconds)
-    ## Iteration 100: error is 60.670123 (50 iterations in 0.04 seconds)
-    ## Iteration 150: error is 60.512413 (50 iterations in 0.04 seconds)
-    ## Iteration 200: error is 60.500869 (50 iterations in 0.04 seconds)
-    ## Iteration 250: error is 60.509781 (50 iterations in 0.04 seconds)
-    ## Iteration 300: error is 1.185484 (50 iterations in 0.04 seconds)
-    ## Iteration 350: error is 1.087096 (50 iterations in 0.03 seconds)
-    ## Iteration 400: error is 1.060504 (50 iterations in 0.04 seconds)
-    ## Iteration 450: error is 1.050066 (50 iterations in 0.04 seconds)
-    ## Iteration 500: error is 1.043022 (50 iterations in 0.04 seconds)
-    ## Iteration 550: error is 1.039719 (50 iterations in 0.04 seconds)
-    ## Iteration 600: error is 1.036346 (50 iterations in 0.04 seconds)
-    ## Iteration 650: error is 1.034848 (50 iterations in 0.03 seconds)
-    ## Iteration 700: error is 1.034123 (50 iterations in 0.04 seconds)
-    ## Iteration 750: error is 1.033509 (50 iterations in 0.03 seconds)
-    ## Iteration 800: error is 1.031837 (50 iterations in 0.04 seconds)
-    ## Iteration 850: error is 1.030173 (50 iterations in 0.04 seconds)
-    ## Iteration 900: error is 1.029669 (50 iterations in 0.04 seconds)
-    ## Iteration 950: error is 1.029099 (50 iterations in 0.04 seconds)
-    ## Iteration 1000: error is 1.028040 (50 iterations in 0.03 seconds)
-    ## Fitting performed in 0.73 seconds.
+    ## Iteration 50: error is 62.700802 (50 iterations in 0.06 seconds)
+    ## Iteration 100: error is 60.597180 (50 iterations in 0.05 seconds)
+    ## Iteration 150: error is 60.499382 (50 iterations in 0.05 seconds)
+    ## Iteration 200: error is 60.480795 (50 iterations in 0.04 seconds)
+    ## Iteration 250: error is 60.489090 (50 iterations in 0.04 seconds)
+    ## Iteration 300: error is 1.176545 (50 iterations in 0.04 seconds)
+    ## Iteration 350: error is 1.083905 (50 iterations in 0.04 seconds)
+    ## Iteration 400: error is 1.061377 (50 iterations in 0.04 seconds)
+    ## Iteration 450: error is 1.052420 (50 iterations in 0.04 seconds)
+    ## Iteration 500: error is 1.046479 (50 iterations in 0.04 seconds)
+    ## Iteration 550: error is 1.042851 (50 iterations in 0.04 seconds)
+    ## Iteration 600: error is 1.040268 (50 iterations in 0.04 seconds)
+    ## Iteration 650: error is 1.037604 (50 iterations in 0.04 seconds)
+    ## Iteration 700: error is 1.036211 (50 iterations in 0.03 seconds)
+    ## Iteration 750: error is 1.035105 (50 iterations in 0.04 seconds)
+    ## Iteration 800: error is 1.033942 (50 iterations in 0.03 seconds)
+    ## Iteration 850: error is 1.032928 (50 iterations in 0.04 seconds)
+    ## Iteration 900: error is 1.031592 (50 iterations in 0.03 seconds)
+    ## Iteration 950: error is 1.030319 (50 iterations in 0.04 seconds)
+    ## Iteration 1000: error is 1.029162 (50 iterations in 0.04 seconds)
+    ## Fitting performed in 0.79 seconds.
 
 ![](ProjectReport_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
 
@@ -354,29 +354,29 @@ the train and test splits.
     ## Using no_dims = 2, perplexity = 30.000000, and theta = 0.500000
     ## Computing input similarities...
     ## Building tree...
-    ## Done in 0.01 seconds (sparsity = 0.416756)!
+    ## Done in 0.02 seconds (sparsity = 0.416756)!
     ## Learning embedding...
-    ## Iteration 50: error is 51.385691 (50 iterations in 0.02 seconds)
-    ## Iteration 100: error is 52.442289 (50 iterations in 0.02 seconds)
-    ## Iteration 150: error is 50.857743 (50 iterations in 0.02 seconds)
-    ## Iteration 200: error is 52.952017 (50 iterations in 0.02 seconds)
-    ## Iteration 250: error is 54.594318 (50 iterations in 0.02 seconds)
-    ## Iteration 300: error is 1.050056 (50 iterations in 0.01 seconds)
-    ## Iteration 350: error is 0.621445 (50 iterations in 0.01 seconds)
-    ## Iteration 400: error is 0.566228 (50 iterations in 0.01 seconds)
-    ## Iteration 450: error is 0.561240 (50 iterations in 0.01 seconds)
-    ## Iteration 500: error is 0.557971 (50 iterations in 0.01 seconds)
-    ## Iteration 550: error is 0.555795 (50 iterations in 0.01 seconds)
-    ## Iteration 600: error is 0.554903 (50 iterations in 0.01 seconds)
-    ## Iteration 650: error is 0.554866 (50 iterations in 0.01 seconds)
-    ## Iteration 700: error is 0.552684 (50 iterations in 0.01 seconds)
-    ## Iteration 750: error is 0.552692 (50 iterations in 0.01 seconds)
-    ## Iteration 800: error is 0.549284 (50 iterations in 0.01 seconds)
-    ## Iteration 850: error is 0.550438 (50 iterations in 0.01 seconds)
-    ## Iteration 900: error is 0.549685 (50 iterations in 0.01 seconds)
-    ## Iteration 950: error is 0.549357 (50 iterations in 0.01 seconds)
-    ## Iteration 1000: error is 0.549799 (50 iterations in 0.01 seconds)
-    ## Fitting performed in 0.28 seconds.
+    ## Iteration 50: error is 52.035755 (50 iterations in 0.01 seconds)
+    ## Iteration 100: error is 51.752360 (50 iterations in 0.02 seconds)
+    ## Iteration 150: error is 51.576343 (50 iterations in 0.01 seconds)
+    ## Iteration 200: error is 53.117772 (50 iterations in 0.02 seconds)
+    ## Iteration 250: error is 54.987978 (50 iterations in 0.02 seconds)
+    ## Iteration 300: error is 0.970321 (50 iterations in 0.02 seconds)
+    ## Iteration 350: error is 0.671287 (50 iterations in 0.01 seconds)
+    ## Iteration 400: error is 0.568487 (50 iterations in 0.01 seconds)
+    ## Iteration 450: error is 0.564649 (50 iterations in 0.01 seconds)
+    ## Iteration 500: error is 0.563459 (50 iterations in 0.01 seconds)
+    ## Iteration 550: error is 0.561622 (50 iterations in 0.01 seconds)
+    ## Iteration 600: error is 0.561305 (50 iterations in 0.01 seconds)
+    ## Iteration 650: error is 0.560293 (50 iterations in 0.01 seconds)
+    ## Iteration 700: error is 0.559829 (50 iterations in 0.01 seconds)
+    ## Iteration 750: error is 0.558196 (50 iterations in 0.01 seconds)
+    ## Iteration 800: error is 0.559114 (50 iterations in 0.01 seconds)
+    ## Iteration 850: error is 0.558366 (50 iterations in 0.01 seconds)
+    ## Iteration 900: error is 0.558316 (50 iterations in 0.01 seconds)
+    ## Iteration 950: error is 0.558808 (50 iterations in 0.01 seconds)
+    ## Iteration 1000: error is 0.558928 (50 iterations in 0.01 seconds)
+    ## Fitting performed in 0.27 seconds.
 
 ![](ProjectReport_files/figure-gfm/unnamed-chunk-13-2.png)<!-- -->
 
@@ -391,27 +391,27 @@ IDs for malignant cells.
     ## Building tree...
     ## Done in 0.15 seconds (sparsity = 0.055903)!
     ## Learning embedding...
-    ## Iteration 50: error is 78.824292 (50 iterations in 0.12 seconds)
-    ## Iteration 100: error is 78.818529 (50 iterations in 0.10 seconds)
-    ## Iteration 150: error is 78.117265 (50 iterations in 0.11 seconds)
-    ## Iteration 200: error is 78.066286 (50 iterations in 0.11 seconds)
-    ## Iteration 250: error is 78.050937 (50 iterations in 0.10 seconds)
-    ## Iteration 300: error is 2.398672 (50 iterations in 0.09 seconds)
-    ## Iteration 350: error is 2.215837 (50 iterations in 0.09 seconds)
-    ## Iteration 400: error is 2.144219 (50 iterations in 0.09 seconds)
-    ## Iteration 450: error is 2.106680 (50 iterations in 0.09 seconds)
-    ## Iteration 500: error is 2.083824 (50 iterations in 0.09 seconds)
-    ## Iteration 550: error is 2.080753 (50 iterations in 0.09 seconds)
-    ## Iteration 600: error is 2.073782 (50 iterations in 0.09 seconds)
-    ## Iteration 650: error is 2.066362 (50 iterations in 0.09 seconds)
-    ## Iteration 700: error is 2.060701 (50 iterations in 0.10 seconds)
-    ## Iteration 750: error is 2.056451 (50 iterations in 0.09 seconds)
-    ## Iteration 800: error is 2.052181 (50 iterations in 0.09 seconds)
-    ## Iteration 850: error is 2.049074 (50 iterations in 0.09 seconds)
-    ## Iteration 900: error is 2.046324 (50 iterations in 0.09 seconds)
-    ## Iteration 950: error is 2.043487 (50 iterations in 0.09 seconds)
-    ## Iteration 1000: error is 2.040982 (50 iterations in 0.09 seconds)
-    ## Fitting performed in 1.91 seconds.
+    ## Iteration 50: error is 78.824339 (50 iterations in 0.13 seconds)
+    ## Iteration 100: error is 78.816792 (50 iterations in 0.20 seconds)
+    ## Iteration 150: error is 78.163768 (50 iterations in 0.19 seconds)
+    ## Iteration 200: error is 78.146059 (50 iterations in 0.18 seconds)
+    ## Iteration 250: error is 78.140127 (50 iterations in 0.16 seconds)
+    ## Iteration 300: error is 2.405107 (50 iterations in 0.10 seconds)
+    ## Iteration 350: error is 2.220818 (50 iterations in 0.09 seconds)
+    ## Iteration 400: error is 2.146132 (50 iterations in 0.09 seconds)
+    ## Iteration 450: error is 2.108013 (50 iterations in 0.09 seconds)
+    ## Iteration 500: error is 2.087878 (50 iterations in 0.10 seconds)
+    ## Iteration 550: error is 2.075344 (50 iterations in 0.12 seconds)
+    ## Iteration 600: error is 2.067853 (50 iterations in 0.11 seconds)
+    ## Iteration 650: error is 2.063171 (50 iterations in 0.09 seconds)
+    ## Iteration 700: error is 2.060373 (50 iterations in 0.09 seconds)
+    ## Iteration 750: error is 2.058315 (50 iterations in 0.09 seconds)
+    ## Iteration 800: error is 2.055809 (50 iterations in 0.09 seconds)
+    ## Iteration 850: error is 2.053382 (50 iterations in 0.09 seconds)
+    ## Iteration 900: error is 2.051070 (50 iterations in 0.09 seconds)
+    ## Iteration 950: error is 2.048848 (50 iterations in 0.10 seconds)
+    ## Iteration 1000: error is 2.047071 (50 iterations in 0.10 seconds)
+    ## Fitting performed in 2.31 seconds.
 
 ![](ProjectReport_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
 
@@ -423,27 +423,27 @@ IDs for malignant cells.
     ## Building tree...
     ## Done in 0.03 seconds (sparsity = 0.180283)!
     ## Learning embedding...
-    ## Iteration 50: error is 64.010058 (50 iterations in 0.04 seconds)
-    ## Iteration 100: error is 63.363956 (50 iterations in 0.03 seconds)
-    ## Iteration 150: error is 63.360318 (50 iterations in 0.04 seconds)
-    ## Iteration 200: error is 63.361303 (50 iterations in 0.03 seconds)
-    ## Iteration 250: error is 63.362033 (50 iterations in 0.03 seconds)
-    ## Iteration 300: error is 1.518065 (50 iterations in 0.03 seconds)
-    ## Iteration 350: error is 1.429864 (50 iterations in 0.03 seconds)
-    ## Iteration 400: error is 1.409286 (50 iterations in 0.03 seconds)
-    ## Iteration 450: error is 1.399135 (50 iterations in 0.03 seconds)
-    ## Iteration 500: error is 1.392370 (50 iterations in 0.03 seconds)
-    ## Iteration 550: error is 1.385350 (50 iterations in 0.03 seconds)
-    ## Iteration 600: error is 1.381290 (50 iterations in 0.03 seconds)
-    ## Iteration 650: error is 1.379845 (50 iterations in 0.03 seconds)
-    ## Iteration 700: error is 1.378087 (50 iterations in 0.03 seconds)
-    ## Iteration 750: error is 1.376691 (50 iterations in 0.03 seconds)
-    ## Iteration 800: error is 1.375840 (50 iterations in 0.03 seconds)
-    ## Iteration 850: error is 1.374692 (50 iterations in 0.03 seconds)
-    ## Iteration 900: error is 1.373808 (50 iterations in 0.03 seconds)
-    ## Iteration 950: error is 1.373031 (50 iterations in 0.03 seconds)
-    ## Iteration 1000: error is 1.372519 (50 iterations in 0.03 seconds)
-    ## Fitting performed in 0.64 seconds.
+    ## Iteration 50: error is 64.821432 (50 iterations in 0.05 seconds)
+    ## Iteration 100: error is 63.421301 (50 iterations in 0.04 seconds)
+    ## Iteration 150: error is 63.354770 (50 iterations in 0.04 seconds)
+    ## Iteration 200: error is 63.355538 (50 iterations in 0.03 seconds)
+    ## Iteration 250: error is 63.355450 (50 iterations in 0.03 seconds)
+    ## Iteration 300: error is 1.519684 (50 iterations in 0.03 seconds)
+    ## Iteration 350: error is 1.431593 (50 iterations in 0.03 seconds)
+    ## Iteration 400: error is 1.410932 (50 iterations in 0.03 seconds)
+    ## Iteration 450: error is 1.390842 (50 iterations in 0.03 seconds)
+    ## Iteration 500: error is 1.385096 (50 iterations in 0.03 seconds)
+    ## Iteration 550: error is 1.377736 (50 iterations in 0.03 seconds)
+    ## Iteration 600: error is 1.375767 (50 iterations in 0.03 seconds)
+    ## Iteration 650: error is 1.369611 (50 iterations in 0.03 seconds)
+    ## Iteration 700: error is 1.365262 (50 iterations in 0.03 seconds)
+    ## Iteration 750: error is 1.354447 (50 iterations in 0.03 seconds)
+    ## Iteration 800: error is 1.353162 (50 iterations in 0.03 seconds)
+    ## Iteration 850: error is 1.353050 (50 iterations in 0.03 seconds)
+    ## Iteration 900: error is 1.351274 (50 iterations in 0.03 seconds)
+    ## Iteration 950: error is 1.349556 (50 iterations in 0.03 seconds)
+    ## Iteration 1000: error is 1.348184 (50 iterations in 0.04 seconds)
+    ## Fitting performed in 0.67 seconds.
 
 ![](ProjectReport_files/figure-gfm/unnamed-chunk-14-2.png)<!-- -->
 
@@ -828,9 +828,9 @@ qualitative evaluation of the model in the full single cell dataset. The
 general visualization of SHAP values indicates a clear association for
 the following genes:
 
-![](JupyterNB/beeswarmSHAP.png)
+![](~/GitHub/MetastaticMelanomaSC/JupyterNB/beeswarmSHAP.png)
 
-![](JupyterNB/absoluteSHAP.png)
+![](~/GitHub/MetastaticMelanomaSC/JupyterNB/absoluteSHAP.png)
 
 The gene with higher absolute contribution to the model was the
 ribosomal protein ENSG00000185088 (RPS27L), followed by ENSG00000204592

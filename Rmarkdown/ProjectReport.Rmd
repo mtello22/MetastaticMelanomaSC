@@ -41,7 +41,7 @@ The data for the current report was downloaded from the GEO accession omnibus. s
 
 ```{r}
 # Read header of the file for metadata
-sc_metadata <- fread("Data/GSE72056_melanoma_single_cell_revised_v2.tsv", 
+sc_metadata <- fread("~/GitHub/MetastaticMelanomaSC/Data/GSE72056_melanoma_single_cell_revised_v2.tsv", 
                      nrows = 3, header = TRUE, drop = 1)
 sc_metadata <- data.table(names(sc_metadata), data.table:::transpose(sc_metadata))
 # Change colnames
@@ -68,13 +68,13 @@ sc_metadata[,nm_celltype := NULL]
 sc_metadata[, tumor_id := factor(as.character(tumor_id))]
 
 # Load donor metadata
-sample_metadata <- fread("Data/sample_metadata_simplified.tsv")
+sample_metadata <- fread("~/GitHub/MetastaticMelanomaSC/Data/sample_metadata_simplified.tsv")
 sample_metadata[, PostOpTreatment := NULL]
 sample_metadata[, Resistant := !Resistant]
 sample_metadata[, tumor_id := factor(as.character(tumor_id))]
 
 # Load sc expression data
-scexp <- fread("Data/GSE72056_melanoma_single_cell_revised_v2.tsv", header = TRUE)
+scexp <- fread("~/GitHub/MetastaticMelanomaSC/Data/GSE72056_melanoma_single_cell_revised_v2.tsv", header = TRUE)
 scexp <- scexp[4:nrow(scexp),]
 setnames(scexp, "Cell", "Gene")
 scexp <- as.matrix(scexp[, .SD, .SDcols = !"Gene"])
@@ -281,7 +281,8 @@ The first step is to load the expression data and homogenize the gene identifier
 
 ```{r}
 # Load sc expression data
-scexp <- fread("Data/GSE72056_melanoma_single_cell_revised_v2.tsv", header = TRUE)
+scexp <- fread("~/GitHub/MetastaticMelanomaSC/Data/GSE72056_melanoma_single_cell_revised_v2.tsv",
+               header = TRUE)
 scexp <- scexp[4:nrow(scexp),]
 setnames(scexp, "Cell", "Gene")
 
@@ -295,7 +296,8 @@ gene_id_table <- data.table(Gene = gb$hgnc_symbol,
                             ENSG = gb$ensembl_gene_id, 
                             ENSGN = gb$ensembl_gene_id_version)
 # Make sure match with validation data
-validation_genes <- fread("Data/GSE77940_pre_post_melanoma.tsv", select = 1, col.names = "ENSGN")
+validation_genes <- fread("~/GitHub/MetastaticMelanomaSC/Data/GSE77940_pre_post_melanoma.tsv",
+                          select = 1, col.names = "ENSGN")
 gene_id_table <- merge.data.table(gene_id_table, validation_genes)
 
 # Combine gene annotation and conserve regular ENSG ID
@@ -335,6 +337,7 @@ top_var_genes <- scexp_annot$ENSG[temp > 0.9]
 # RAF (ENSG00000132155, MEK (ENSG00000169032))
 # For mutations:
 # BRAF(ENSG00000157764), NRAS (ENSG00000213281)
+
 add_genes <- gene_id_table[Gene %in% c("MITF", "AXL", "RAF1", "MEK", "BRAF", "NRAS"), ENSG]
 keep_genes <- union(top_var_genes, add_genes)
 
@@ -468,21 +471,23 @@ scexp_train[,cell_id := NULL]
 # Remove genes with undetermined z-score
 scexp_train <- scexp_train[, .SD, .SDcols = !undetgenes]
 fwrite(scexp_train, 
-       "Data/train_ft_sd_topvar.tsv", append = FALSE, quote = FALSE, sep = '\t', 
+       "~/GitHub/MetastaticMelanomaSC/Data/train_ft_sd_topvar.tsv", 
+       append = FALSE, quote = FALSE, sep = '\t', 
        row.names = FALSE, col.names = TRUE)
 
 scexp_test <- merge.data.table(ft_ids, scexp_test, by = "cell_id")
 scexp_test[,cell_id := NULL]
 scexp_test <- scexp_test[, .SD, .SDcols = !undetgenes]
 fwrite(scexp_test, 
-       "Data/test_ft_sd_topvar.tsv", append = FALSE, quote = FALSE, sep = '\t', 
+       "~/GitHub/MetastaticMelanomaSC/Data/test_ft_sd_topvar.tsv", 
+       append = FALSE, quote = FALSE, sep = '\t', 
        row.names = FALSE, col.names = TRUE)
 
 ```
 
 ```{r}
 # apply same process to validation data
-validation_data <- fread("Data/GSE77940_pre_post_melanoma.tsv")
+validation_data <- fread("~/GitHub/MetastaticMelanomaSC/Data/GSE77940_pre_post_melanoma.tsv")
 
 validation_data <- merge.data.table(x = gene_id_table, y =  validation_data, by.x = "ENSGN", by.y = "ENSG")
 validation_data <- validation_data[ENSG %in% keep_genes]
@@ -503,12 +508,12 @@ validation_data[, tumor_id := str_remove(tumor_id, "Patient")]
 # Remove 61 and 62 since there is not metadata
 validation_data <- validation_data[1:10,]
 # Add target variable
-validation_metadata <- fread("Data/bulk_metadata_encoded.txt", select = c(1,3))
+validation_metadata <- fread("~/GitHub/MetastaticMelanomaSC/Data/bulk_metadata_encoded.txt", select = c(1,3))
 validation_metadata[, tumor_id := factor(tumor_id)]
 validation_data <- merge.data.table(validation_metadata,validation_data, by = "tumor_id")
 setcolorder(validation_data, names(scexp_train))
 # Write data
-fwrite(validation_data, "Data/bulk_validation_sd_encoded.tsv", append = FALSE, quote = FALSE, sep = '\t', row.names = FALSE, col.names = TRUE)
+fwrite(validation_data, "~/GitHub/MetastaticMelanomaSC/Data/bulk_validation_sd_encoded.tsv", append = FALSE, quote = FALSE, sep = '\t', row.names = FALSE, col.names = TRUE)
 
 ```
 
@@ -587,9 +592,9 @@ The discrepancy with the results from the presentation are likely due to a more 
 
 Due to the limited ability of the model trained in sc-RNAseq data to predict tumor resistance in bulk RNAseq data, I proceeded to perform a qualitative evaluation of the model in the full single cell dataset. The general visualization of SHAP values indicates a clear association for the following genes:
 
-![](JupyterNB/beeswarmSHAP.png)
+![](~/GitHub/MetastaticMelanomaSC/JupyterNB/beeswarmSHAP.png)
 
-![](JupyterNB/absoluteSHAP.png)
+![](~/GitHub/MetastaticMelanomaSC/JupyterNB/absoluteSHAP.png)
 
 The gene with higher absolute contribution to the model was the ribosomal protein ENSG00000185088 (RPS27L), followed by ENSG00000204592 (HLA-E). A recent study by Bakr et al 2020, highlights the crucial role of other ribosomal proteins such as RPS19 and RPS3 as biomarkers of melanoma prognosis [10]. On the other hand, HLA-E plays an important inmunological role and according to the Human Protein Atlas, it is upregulated in leukemia samples and it is associated with an unfavorable prognosis in renal cancer. It is interesting that many genes showed a clear bimodal association of SHAP with expression values such as the ribosomal protein RPS29 (ENSG00000213741), indicating a potential role as tumor resistance biomarker.
 
