@@ -1,5 +1,5 @@
 ---
-title: "CPSC545 Project report"
+title: "Project report"
 author: "Marco Tello"
 date: "`r Sys.Date()`"
 output: github_document
