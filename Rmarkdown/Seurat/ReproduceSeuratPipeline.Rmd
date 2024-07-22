@@ -1,0 +1,298 @@
+---
+title: "Seurat tutorial"
+author: "Marco Tello"
+date: "2024-03-11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+library(Seurat)
+library(patchwork)
+library(data.table)
+library(biomaRt)
+library(ggplot2)
+library(scales)
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Seurat tutorial 
+
+
+The current markdown is structured to reproduce the Seurat tutorial utilizing:
+
+a) Seurat functions and data 
+
+b) Seurat data with custom functions
+
+c) Melanoma data with custom functions
+
+In this way I aim to apply the Seurat pipeline to the Melanoma dataset to compare the identified cell types from the reference paper. 
+
+
+#### Seurat tutorial data
+
+```{r}
+# Load raw data from a file with barcodes, genes and matrix files
+pbmc.data <- Read10X(data.dir = "C:/Users/mtello/Documents/GitHub/MetastaticMelanomaSC/Rmarkdown/Seurat/tutorial_data/pbmc3k_filtered_gene_bc_matrices/filtered_gene_bc_matrices/hg19")
+pbmc <- CreateSeuratObject(counts = pbmc.data, project = "pbmc3k", min.cells = 3, min.features = 200)
+pbmc
+
+```
+#### Seurat tutorial with melanoma 
+
+```{r}
+# To read a MTX file we omit the top three rows since they're headers:
+# https://kb.10xgenomics.com/hc/en-us/articles/115000794686-How-is-the-MEX-format-used-for-the-gene-barcode-matrices
+
+input_folder <- "~/GitHub/MetastaticMelanomaSC/Rmarkdown/Seurat/tutorial_data/pbmc3k_filtered_gene_bc_matrices/filtered_gene_bc_matrices/hg19"
+pbmc_noseurat <- fread(input = file.path(input_folder, "matrix.mtx"), 
+                       header = FALSE, skip = 3, 
+                       col.names = c("gene_idx", "cell_idx", "UMI_count"))
+
+genes <- fread(input = file.path(input_folder, "genes.tsv"), header = FALSE, col.names = c("ENSG", "Symbol"))
+genes[, gene_idx := 1:nrow(genes)]
+# setkey(genes, "gene_idx")
+
+pbmc_noseurat <- merge.data.table(x = genes, y = pbmc_noseurat, by = "gene_idx", all.y = TRUE)
+pbmc_noseurat[, gene_idx := NULL]
+
+```
+
+
+```{r}
+metastatic_melanoma <- fread("~/GitHub/MetastaticMelanomaSC/Data/GEO_download/GSE115978_counts.csv/GSE115978_counts.csv", 
+                             header = TRUE, sep = ",")
+setnames(metastatic_melanoma, "V1", "Symbol")
+
+metastatic_melanoma <- melt(metastatic_melanoma, id.vars = "Symbol", variable.name = "cell_idx", value.name = "UMI_count")
+
+metastatic_melanoma <- metastatic_melanoma[UMI_count > 0]
+
+```
+
+
+
+## QC and pre-processing
+
+
+In the example below, we visualize QC metrics, and use these to filter cells.
+
+- We filter cells that have unique feature counts over 2,500 or less than 200
+- We filter cells that have >5% mitochondrial counts
+
+
+### Seurat tutorial data
+
+#### Mitochondrial signal and number of unique genes by cell 
+
+```{r}
+# The [[ operator can add columns to object metadata. This is a great place to stash QC stats
+pbmc[["percent.mt"]] <- PercentageFeatureSet(pbmc, pattern = "^MT-")
+# Visualize QC metrics as a violin plot
+VlnPlot(pbmc, features = c("nFeature_RNA", "nCount_RNA", "percent.mt"), ncol = 3)
+
+```
+
+```{r}
+plot1 <- FeatureScatter(pbmc, feature1 = "nCount_RNA", feature2 = "percent.mt")
+plot2 <- FeatureScatter(pbmc, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
+plot1 + plot2
+```
+
+```{r}
+pbmc <- subset(pbmc, subset = nFeature_RNA > 200 & nFeature_RNA < 2500 & percent.mt < 5)
+
+VlnPlot(pbmc, features = c("nFeature_RNA", "nCount_RNA", "percent.mt"), ncol = 3)
+plot1 <- FeatureScatter(pbmc, feature1 = "nCount_RNA", feature2 = "percent.mt")
+plot2 <- FeatureScatter(pbmc, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
+plot1 + plot2
+```
+
+
+### Seurat tutorial with melanoma data
+
+#### Mitochondrial signal and number of unique genes by cell 
+
+```{r}
+
+mt_counts <- pbmc_noseurat[grepl(pattern = "^MT-", x = Symbol), .(mt_counts = sum(UMI_count)), by = cell_idx]
+mt_counts <- merge.data.table(x = pbmc_noseurat[, .(total_counts = sum(UMI_count)), by = cell_idx], y =  mt_counts, by = "cell_idx")
+mt_counts[, mt_percent := round((mt_counts / total_counts)*100,2)]
+plot(x = mt_counts$total_counts, y = mt_counts$mt_percent)
+
+mt_cells_keep <- mt_counts[mt_percent < 5, cell_idx]
+plot(x = mt_counts[mt_percent < 5, total_counts], 
+     y = mt_counts[mt_percent < 5, mt_percent])
+
+```
+
+```{r}
+uniqueRNA <- pbmc_noseurat[, .(nFeature_RNA = length(unique(ENSG)), total_counts = sum(UMI_count)), by = cell_idx]
+plot(x = uniqueRNA$total_counts, y = uniqueRNA$nFeature_RNA)
+
+uniqueRNA_cells_kepp <- uniqueRNA[nFeature_RNA > 200 & nFeature_RNA < 2500, cell_idx]
+
+plot(x = uniqueRNA[nFeature_RNA > 200 & nFeature_RNA < 2500, total_counts], 
+     y = uniqueRNA[nFeature_RNA > 200 & nFeature_RNA < 2500, nFeature_RNA])
+
+```
+
+```{r}
+cells_keep <- intersect(mt_cells_keep, uniqueRNA_cells_kepp)
+pbmc_noseurat <- pbmc_noseurat[cell_idx %in% cells_keep]
+```
+
+
+Since there is no overlap between the Seurat tutorial genes labelled as mitochondrial and the Melanoma dataset, I performed a query of all gene symbols in the Melanoma dataset using BiomaRt to extract the chromosome name.
+
+```{r}
+# Filter to keep only entries with GeneSymbol
+# Prepare elements for doing a query in biomaRt
+# ENSEMBL genes
+ensembl <- useMart("ensembl", host= "grch37.ensembl.org", dataset = "hsapiens_gene_ensembl")
+genes <- unique(metastatic_melanoma$Symbol)
+canonical_chromosomes <- as.character(c(1:22, "X", "Y", "MT"))
+
+# Generate conversion table
+# Map ENSEMBL gene IDS to ENSEMBL
+gene_IDs <- getBM(mart = ensembl, 
+                  attributes = c("hgnc_symbol", "chromosome_name"), 
+                  filters = "hgnc_symbol", 
+                  values = list(genes, canonical_chromosomes))
+gene_IDs <- as.data.table(gene_IDs)
+table(gene_IDs[, chromosome_name])
+```
+There are no genes mapped to a mitochondrial chromosome, therefore I proceeded with the next step of identifying unique features. 
+
+Please note that during this step, I removed genes that were not mapped to canonical chromosomes to simplify future analyses. 
+
+```{r}
+metastatic_melanoma <- metastatic_melanoma[Symbol %in% gene_IDs$hgnc_symbol]
+uniqueRNA <- metastatic_melanoma[, .(nFeature_RNA = length(unique(Symbol)), total_counts = sum(UMI_count)), by = cell_idx]
+
+ggplot(uniqueRNA, aes(x = "Melanoma Dataset" ,y = total_counts)) +
+  geom_violin() +
+  scale_y_continuous(trans = "log10", labels = comma)
+
+ggplot(uniqueRNA, aes(x = "Melanoma Dataset" ,y = nFeature_RNA)) +
+  geom_violin() +
+  scale_y_continuous(trans = "log10", labels = comma)
+
+ggplot(uniqueRNA, aes(x = total_counts, y = nFeature_RNA)) +
+  geom_point() + 
+  scale_x_continuous(trans = "log10",labels = comma)
+
+summary(uniqueRNA$nFeature_RNA)
+
+uniqueRNA_cells_kepp <- uniqueRNA[nFeature_RNA > 2000 & nFeature_RNA < 6000, cell_idx]
+uniqueRNA <- uniqueRNA[cell_idx %in% uniqueRNA_cells_kepp]
+```
+
+Based on these visualizations, there is not an abundance of cells with low number of genes represented. Nevertheless, to provide a more complete training set, I decided to apply a low-bound filter based on the first quartile, and a upper-bound filter based on the 90 percentile. 
+
+Once trimmed, the datset looks as follow:
+
+```{r}
+ggplot(uniqueRNA, aes(x = "Melanoma Dataset" ,y = total_counts)) +
+  geom_violin() +
+  scale_y_continuous(trans = "log10", labels = comma)
+
+ggplot(uniqueRNA, aes(x = "Melanoma Dataset" ,y = nFeature_RNA)) +
+  geom_violin() +
+  scale_y_continuous(trans = "log10", labels = comma)
+
+ggplot(uniqueRNA, aes(x = total_counts, y = nFeature_RNA)) +
+  geom_point() + 
+  scale_x_continuous(trans = "log10",labels = comma)
+
+metastatic_melanoma <- metastatic_melanoma[cell_idx %in% uniqueRNA_cells_kepp]
+
+```
+
+This filtering removes 1,235 cells (17.2%), leaving a total of 5,951 cells for downstream analyses.
+
+
+
+### Normalize data
+
+The next steo in the Seurat pipeline is to nomalize the counts from each cell. 
+
+### Seurat tutorial data
+
+```{r}
+pbmc <- NormalizeData(pbmc, normalization.method = "LogNormalize", scale.factor = 10000)
+
+head(pbmc[["RNA"]]$data[c("MRPL20", "RPL22"), 1:10])
+```
+### Seurat tutorial with melanoma data
+
+We verified that the custom functions provide the same result by looking at normalized expression values for the genes MRPL20 and RPL22
+
+```{r}
+scaling_factor <- 10000
+norm_exp <- pbmc_noseurat[, .(Symbol, UMI_count, total_counts = sum(UMI_count)), by = cell_idx]
+norm_exp <- norm_exp[, .(norm_exp = log1p((UMI_count / total_counts) * scaling_factor)), by = c("cell_idx", "Symbol")]
+setorder(norm_exp, "cell_idx")
+norm_exp[cell_idx %in% c(1:4) & Symbol %in% c("MRPL20", "RPL22")]
+
+```
+
+
+```{r}
+
+melanoma_norm_exp <- metastatic_melanoma[, .(Symbol, UMI_count, total_counts = sum(UMI_count)), by = cell_idx]
+melanoma_norm_exp <- melanoma_norm_exp[, .(norm_exp = log1p((UMI_count / total_counts) * scaling_factor)), by = c("cell_idx", "Symbol")]
+
+```
+
+
+### Select variable genes
+
+```{r}
+pbmc <- FindVariableFeatures(pbmc, selection.method = "vst", nfeatures = 2000)
+
+# Identify the 10 most highly variable genes
+top10 <- head(VariableFeatures(pbmc), 10)
+
+# plot variable features with and without labels
+plot1 <- VariableFeaturePlot(pbmc)
+plot2 <- LabelPoints(plot = plot1, points = top10, repel = TRUE)
+```
+
+
+```{r}
+plot1
+plot2
+```
+
+### Scale the data 
+
+
+```{r}
+all.genes <- rownames(pbmc)
+pbmc <- ScaleData(pbmc, features = all.genes)
+```
+
+### Perform dimensionality reduction
+
+```{r}
+pbmc <- RunPCA(pbmc, features = VariableFeatures(object = pbmc))
+```
+
+
+```{r}
+DimHeatmap(pbmc, dims = 1, cells = 500, balanced = TRUE)
+```
+
+
+### Define PCs to include 
+
+```{r}
+ElbowPlot(pbmc)
+```
+
+
+
+
