@@ -25,6 +25,10 @@ metastatic melanoma by single-cell RNA-seq" from 2016.
     to run the supervised learning pipeline and calculate the SHAP
     values for the best trained model.
 
+To facilitate data exploration I developed the following Shiny apps:
+-   Reactive document (sample dataset): https://mtello.shinyapps.io/reactive_doc/
+-   Static tSNE visualization (full dataset): https://mtello.shinyapps.io/tsneviz/
+
 Below is the original project proposal:
 
 # Re-analysis proposal
